@@ -63,6 +63,9 @@ public class Lexer {
                    case FALSE:
                        System.out.println("<FALSE, " + s + ">");
                        break;
+                   default:
+                       System.out.println("<ID, " + s + ">");
+                       break;
                }
 
                return;
@@ -72,6 +75,16 @@ public class Lexer {
             System.out.println("<ID, " + s + ">");
             return;
         }
+
+        StringBuilder stringBuilder = new StringBuilder();
+        while(!Character.isWhitespace(peek)){
+            stringBuilder.append((char) peek);
+            peek = System.in.read();
+        }
+
+        peek = ' ';
+
+        System.out.println("<ID, " + stringBuilder.toString() + ">");
     }
 
 
