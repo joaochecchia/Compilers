@@ -89,6 +89,8 @@ public class Parser {
                     match('=');
                     term();
                     break;
+                case ')':
+                    return;
                 case '>':
                     match('>');
                     term();
