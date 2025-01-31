@@ -25,6 +25,7 @@ public class Lexer {
             if (peek == '\n') {
                 line += 1;
             }
+
             peek = System.in.read();
         }
 
@@ -35,13 +36,13 @@ public class Lexer {
                 v = v * 10 + n;
                 peek = System.in.read();
             } while (Character.isDigit(peek));
-            return new Token(NUM, Integer.toString(v));  // Corrigido para retornar número como string
+            return new Token(NUM, Integer.toString(v));
         }
 
         if (Character.isLetter(peek)) {
             StringBuilder ss = new StringBuilder();
             do {
-                ss.append((char) peek);  // Corrigido para adicionar caracteres
+                ss.append((char) peek);
                 peek = System.in.read();
             } while (Character.isLetter(peek));
 
@@ -56,11 +57,11 @@ public class Lexer {
             return new Token(ID, s);
         }
 
-        if (peek == -1) {  // Verifica EOF
+        if (peek == -1) {
             return new Token(Tags.EOF, "");
         }
 
-        Token token = new Token(OP, Character.toString((char) peek));  // Corrigido para operação de caractere
+        Token token = new Token(OP, Character.toString((char) peek));
         peek = ' ';
         return token;
     }

@@ -52,10 +52,10 @@ public class Parser {
             match("(");
             expr();
         } else if(lookAhead.getTag().equals(NUM)) {
-            System.out.print("[" + lookAhead.toString() + "]");
+            System.out.print("[" + lookAhead.getValue() + "]");
             match(lookAhead.getValue());
         } else if(lookAhead.getTag().equals(ID)) {
-            System.out.print("[" + lookAhead.toString() + "]");
+            System.out.print("[" + lookAhead.getValue() + "]");
         } else {
             throw new RuntimeException("Símbolo " + lookAhead.toString());
         }
@@ -64,6 +64,7 @@ public class Parser {
     public boolean match(String tag) throws IOException {
         if (tag.equals(lookAhead.getValue())) {
             lookAhead = lexer.scan();
+
             return true;
         }
 
